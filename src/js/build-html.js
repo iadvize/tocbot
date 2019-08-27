@@ -147,8 +147,7 @@ module.exports = function (options) {
     var position = 0
     if (obj != document.querySelector(options.contentSelector && obj != null)) {
       position = obj.offsetTop
-      if (options.hasInnerContainers)
-        position += getHeadingTopPos(obj.offsetParent)
+      if (options.hasInnerContainers) { position += getHeadingTopPos(obj.offsetParent) }
     }
     return position
   }
@@ -205,7 +204,7 @@ module.exports = function (options) {
       var activeTocLink = document.querySelector(options.tocSelector)
         .querySelector('.' + options.linkClass +
           '.node-name--' + topHeader.nodeName +
-          '[href="#' + topHeader.id + '"]')
+          '[href*="#' + topHeader.id + '"]')
       if (activeTocLink.className.indexOf(options.activeLinkClass) === -1) {
         activeTocLink.className += SPACE_CHAR + options.activeLinkClass
       }
